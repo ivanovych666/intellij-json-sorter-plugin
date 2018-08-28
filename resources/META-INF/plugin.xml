@@ -1,0 +1,49 @@
+<idea-plugin>
+    <id>org.jetbrains.plugins.sample.RegisterActions</id>
+    <name>Sample plugin for working with IntelliJ Action System</name>
+    <version>1.0</version>
+    <vendor email="support@jetbrains.com" url="http://www.jetbrains.com">JetBrains</vendor>
+
+    <description>Illustration of Action System</description>
+
+    <change-notes>Initial commit</change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="131"/>
+    <depends>com.intellij.modules.lang</depends>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <!-- Add your project components here -->
+    </project-components>
+
+    <actions>
+        <!-- Add your actions here -->
+        <!-- The <action> element defines an action to register.
+        The mandatory "id" attribute specifies an unique identifier for the action.
+        The mandatory "class" attribute specifies the full-qualified name of the class implementing the action.
+        The mandatory "text" attribute specifies the text of the action (tooltip for toolbar button or text for menu item).
+        The optional "use-shortcut-of" attribute specifies the ID of the action whose keyboard shortcut this action will use.
+        The optional "description" attribute specifies the text which is displayed in the status bar when the action is focused.
+        The optional "icon" attribute specifies the icon which is displayed on the toolbar button or next to the menu item. -->
+        <group id="SimpleGroup" text="JSON Sorter" popup="true" class="org.jetbrains.tutorials.actions.CustomDefaultActionGroup">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <action class="org.jetbrains.tutorials.actions.Sort" id="org.jetbrains.tutorials.actions.Sort"
+                    text="Sort">
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
