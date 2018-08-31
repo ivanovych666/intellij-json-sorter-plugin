@@ -41,8 +41,17 @@
         The optional "icon" attribute specifies the icon which is displayed on the toolbar button or next to the menu item. -->
         <group id="SimpleGroup" text="JSON Sorter" popup="true" class="org.jetbrains.tutorials.actions.CustomDefaultActionGroup">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <action class="org.jetbrains.tutorials.actions.Sort" id="org.jetbrains.tutorials.actions.Sort"
-                    text="Sort">
+            <action class="org.jetbrains.tutorials.actions.AlphabeticalSort" id="org.jetbrains.tutorials.actions.AlphabeticalSort"
+                    text="Alphabetical Sort">
+            </action>
+            <action class="org.jetbrains.tutorials.actions.AlphabeticalReverseSort" id="org.jetbrains.tutorials.actions.AlphabeticalReverseSort"
+                    text="Alphabetical Reverse Sort">
+            </action>
+            <action class="org.jetbrains.tutorials.actions.NaturalSort" id="org.jetbrains.tutorials.actions.NaturalSort"
+                    text="Natural Sort">
+            </action>
+            <action class="org.jetbrains.tutorials.actions.NaturalReverseSort" id="org.jetbrains.tutorials.actions.NaturalReverseSort"
+                    text="Natural Reverse Sort">
             </action>
         </group>
     </actions>
