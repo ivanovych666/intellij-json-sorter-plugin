@@ -1,4 +1,4 @@
-package org.jetbrains.tutorials.actions;
+package com.ivanovych666.intellij.plugin.jsonsorter;
 
 import java.util.Comparator;
 import java.util.regex.Matcher;

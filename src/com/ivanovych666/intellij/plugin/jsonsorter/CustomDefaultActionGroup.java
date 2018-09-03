@@ -1,4 +1,4 @@
-package org.jetbrains.tutorials.actions;
+package com.ivanovych666.intellij.plugin.jsonsorter;
 
 import com.intellij.json.JsonFileType;
 import com.intellij.openapi.actionSystem.*;
