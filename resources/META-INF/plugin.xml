@@ -2,13 +2,16 @@
     <id>com.ivanovych666.intellij.plugin.jsonsorter</id>
     <name>JSON Sorter</name>
     <version>1.0.0-beta</version>
-    <vendor url="https://github.com/ivanovych666/intellij-json-sorter-plugin">ivanovych666</vendor>
+    <vendor url="https://github.com/ivanovych666/intellij-json-sorter-plugin">Taras Ozarko</vendor>
 
     <description>Reorder JSON Object keys.</description>
 
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
+
     <actions>
-        <group id="SimpleGroup" text="JSON Sorter" popup="true"
-               class="com.ivanovych666.intellij.plugin.jsonsorter.CustomDefaultActionGroup">
+        <group id="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup" text="JSON Sorter" popup="true"
+               class="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"

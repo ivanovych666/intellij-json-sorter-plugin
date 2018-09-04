@@ -4,7 +4,7 @@ import com.intellij.json.JsonFileType;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.vfs.VirtualFile;
 
-public class CustomDefaultActionGroup extends DefaultActionGroup {
+public class JSONSorterGroup extends DefaultActionGroup {
     @Override
     public void update(AnActionEvent event) {
         super.update(event);
