@@ -3,6 +3,7 @@
     <name>JSON Sorter</name>
     <version>1.0.0-beta</version>
     <vendor url="https://github.com/ivanovych666/intellij-json-sorter-plugin">Taras Ozarko</vendor>
+    <idea-version since-build="182"/>
 
     <description>Reorder JSON Object keys.</description>
 
