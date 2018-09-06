@@ -2,10 +2,10 @@ package com.ivanovych666.intellij.plugin.jsonsorter;
 
 import java.util.Comparator;
 
-public class NaturalReverseSort extends NaturalSort {
+public class AlphabeticalReverseCiSort extends AbstractSort {
 
     public Comparator<String> comparator() {
-        return (String a, String b) -> -normalize(a).compareTo(normalize(b));
+        return (String a, String b) -> -a.compareToIgnoreCase(b);
     }
 
 }

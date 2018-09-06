@@ -14,6 +14,7 @@
         <group id="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup" text="JSON Sorter" popup="true"
                class="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"
                     text="Alphabetical Sort">
@@ -30,6 +31,24 @@
                     id="com.ivanovych666.intellij.plugin.jsonsorter.NaturalReverseSort"
                     text="Natural Reverse Sort">
             </action>
+
+            <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalCiSort"
+                    id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalCiSort"
+                    text="Alphabetical Sort (CI)">
+            </action>
+            <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalReverseCiSort"
+                    id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalReverseCiSort"
+                    text="Alphabetical Reverse Sort (CI)">
+            </action>
+            <action class="com.ivanovych666.intellij.plugin.jsonsorter.NaturalCiSort"
+                    id="com.ivanovych666.intellij.plugin.jsonsorter.NaturalCiSort"
+                    text="Natural Sort (CI)">
+            </action>
+            <action class="com.ivanovych666.intellij.plugin.jsonsorter.NaturalReverseCiSort"
+                    id="com.ivanovych666.intellij.plugin.jsonsorter.NaturalReverseCiSort"
+                    text="Natural Reverse Sort (CI)">
+            </action>
+
         </group>
     </actions>
 </idea-plugin>

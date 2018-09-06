@@ -4,10 +4,10 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NaturalSort extends AbstractSort {
+public class NaturalCiSort extends AbstractSort {
 
     public Comparator<String> comparator() {
-        return (String a, String b) -> normalize(a).compareTo(normalize(b));
+        return (String a, String b) -> normalize(a).compareToIgnoreCase(normalize(b));
     }
 
     String normalize(String str) {

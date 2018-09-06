@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class AlphabeticalReverseSort extends AbstractSort {
 
     public Comparator<String> comparator() {
-        return (String a, String b) -> -a.compareToIgnoreCase(b);
+        return (String a, String b) -> -a.compareTo(b);
     }
 
 }
