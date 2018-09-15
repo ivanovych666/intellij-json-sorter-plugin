@@ -1,6 +1,5 @@
 package com.ivanovych666.intellij.plugin.jsonsorter;
 
-import com.google.common.collect.Lists;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -9,21 +8,16 @@ import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONStringer;
-import org.json.JSONWriter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
 
 public abstract class AbstractSort extends AnAction {
 
     abstract Comparator<String> comparator();
 
     @Override
-    public void actionPerformed(AnActionEvent anActionEvent) {
+    public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
         Editor editor = anActionEvent.getData(CommonDataKeys.EDITOR);
         if (editor == null) {
             return;
@@ -31,58 +25,22 @@ public abstract class AbstractSort extends AnAction {
 
         Document document = editor.getDocument();
         String text = document.getText();
+        JSONReader reader = new JSONReader(text);
+        Object value;
 
-        JSONObject srcJson = new JSONObject(text);
-        JSONWriter writer = new JSONStringer();
-
-        writeValue(srcJson, writer, comparator());
-
-        Application app = ApplicationManager.getApplication();
-        app.runWriteAction(() -> {
-            document.setText(writer.toString());
-        });
-
-        reformat(anActionEvent);
-    }
-
-    private void writeValue(Object value, JSONWriter writer, Comparator<String> comparator) {
-
-        if (value instanceof JSONObject) {
-
-            writer.object();
-
-            JSONObject objectValue = (JSONObject) value;
-
-            Iterator<String> keysIterator = objectValue.keys();
-            List<String> keysList = Lists.newArrayList(keysIterator);
-
-            keysList.sort(comparator);
-
-            for (String key : keysList) {
-                writer.key(key);
-                writeValue(objectValue.get(key), writer, comparator);
-            }
-
-            writer.endObject();
-
-        } else if (value instanceof JSONArray) {
-
-            writer.array();
-
-            JSONArray arrayValue = (JSONArray) value;
-
-            for (Object val : arrayValue) {
-                writeValue(val, writer, comparator);
-            }
-
-            writer.endArray();
-
-        } else {
-
-            writer.value(value);
-
+        try {
+            value = reader.read();
+        } catch (Exception e) {
+            return;
         }
 
+        JSONWriter writer = new JSONWriter(comparator());
+        String result = writer.write(value);
+
+        Application app = ApplicationManager.getApplication();
+        app.runWriteAction(() -> document.setText(result));
+
+        reformat(anActionEvent);
     }
 
     private void reformat(AnActionEvent anActionEvent) {
