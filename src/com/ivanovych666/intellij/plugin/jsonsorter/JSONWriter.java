@@ -40,7 +40,7 @@ class JSONWriter {
                 String key = keyValue.getFirst();
                 Object val = keyValue.getSecond();
 
-                stringBuilder.append(key).append(": ");
+                stringBuilder.append(key).append(':');
 
                 write(stringBuilder, val);
             }
