@@ -1,13 +1,16 @@
 package com.ivanovych666.intellij.plugin.jsonsorter;
 
-import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.codeInsight.actions.*;
+import com.intellij.formatting.FormattingModelBuilder;
+import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.lang.LanguageFormatting;
+import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.project.Project;
+import com.intellij.psi.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Comparator;
@@ -18,12 +21,24 @@ public abstract class AbstractSort extends AnAction {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
-        Editor editor = anActionEvent.getData(CommonDataKeys.EDITOR);
+        DataContext dataContext = anActionEvent.getDataContext();
+        Project project = CommonDataKeys.PROJECT.getData(dataContext);
+        if (project == null) {
+            return;
+        }
+
+        Editor editor = CommonDataKeys.EDITOR.getData(dataContext);
         if (editor == null) {
             return;
         }
 
+        PsiDocumentManager.getInstance(project).commitAllDocuments();
         Document document = editor.getDocument();
+        PsiFile file = PsiDocumentManager.getInstance(project).getPsiFile(document);
+        if (file == null) {
+            return;
+        }
+
         String text = document.getText();
         JSONReader reader = new JSONReader(text);
         Object value;
@@ -40,13 +55,16 @@ public abstract class AbstractSort extends AnAction {
         Application app = ApplicationManager.getApplication();
         app.runWriteAction(() -> document.setText(result));
 
-        reformat(anActionEvent);
-    }
+        FormattingModelBuilder formattingModelBuilder = LanguageFormatting.INSTANCE.forContext(file);
+        if (formattingModelBuilder == null) {
+            return;
+        }
 
-    private void reformat(AnActionEvent anActionEvent) {
-        ActionManager am = ActionManager.getInstance();
-        AnAction action = am.getAction("ReformatCode");
-        action.actionPerformed(anActionEvent);
+        LastRunReformatCodeOptionsProvider provider = new LastRunReformatCodeOptionsProvider(PropertiesComponent.getInstance());
+        ReformatCodeRunOptions currentRunOptions = provider.getLastRunOptions(file);
+
+        currentRunOptions.setProcessingScope(TextRangeType.WHOLE_FILE);
+        (new FileInEditorProcessor(file, editor, currentRunOptions)).processCode();
     }
 
 }
