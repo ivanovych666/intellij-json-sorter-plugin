@@ -9,7 +9,6 @@
 
     <change-notes>Fixed issue with formatted values.</change-notes>
 
-    <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <actions>
