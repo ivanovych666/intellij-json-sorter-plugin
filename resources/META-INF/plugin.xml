@@ -7,7 +7,7 @@
 
     <description>Reorder JSON Object keys.</description>
 
-    <change-notes>Fixed issue with formatted values.</change-notes>
+    <change-notes>Fixed IntelliJ Platform compatability</change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
