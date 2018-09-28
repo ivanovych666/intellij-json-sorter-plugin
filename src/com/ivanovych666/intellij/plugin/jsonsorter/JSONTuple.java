@@ -1,9 +1,21 @@
 package com.ivanovych666.intellij.plugin.jsonsorter;
 
-import groovy.lang.Tuple2;
+class JSONTuple {
 
-class JSONTuple extends Tuple2<String, Object> {
-    JSONTuple(String first, Object second) {
-        super(first, second);
+    private String key;
+    private Object value;
+
+    JSONTuple(String key, Object value) {
+        this.key = key;
+        this.value = value;
     }
+
+    String getKey() {
+        return this.key;
+    }
+
+    Object getValue() {
+        return this.value;
+    }
+
 }

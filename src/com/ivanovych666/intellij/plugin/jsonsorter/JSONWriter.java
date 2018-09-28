@@ -8,8 +8,8 @@ class JSONWriter {
 
     JSONWriter(Comparator<String> comparator) {
         this.comparator = (JSONTuple a, JSONTuple b) -> {
-            String as = a.getFirst();
-            String bs = b.getFirst();
+            String as = a.getKey();
+            String bs = b.getKey();
             return comparator.compare(as, bs);
         };
     }
@@ -37,8 +37,8 @@ class JSONWriter {
                 }
                 JSONTuple keyValue = list.get(i);
 
-                String key = keyValue.getFirst();
-                Object val = keyValue.getSecond();
+                String key = keyValue.getKey();
+                Object val = keyValue.getValue();
 
                 stringBuilder.append(key).append(':');
 
