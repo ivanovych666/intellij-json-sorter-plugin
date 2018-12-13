@@ -157,7 +157,7 @@ class JSONReader {
         readCharExact('"');
         string.append('"');
 
-        boolean escaped = true;
+        boolean escaped = false;
         while (index < length) {
             char c = input.charAt(index);
 
