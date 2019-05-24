@@ -10,7 +10,10 @@ class JSONWriter {
         this.comparator = (JSONTuple a, JSONTuple b) -> {
             String as = a.getKey();
             String bs = b.getKey();
-            return comparator.compare(as, bs);
+            return comparator.compare(
+                    as.substring(1, as.length() - 1),
+                    bs.substring(1, bs.length() - 1)
+            );
         };
     }
 
