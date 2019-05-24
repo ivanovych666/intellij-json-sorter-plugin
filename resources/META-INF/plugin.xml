@@ -1,13 +1,21 @@
 <idea-plugin>
     <id>com.ivanovych666.intellij.plugin.jsonsorter</id>
     <name>JSON Sorter</name>
-    <version>1.0.0-beta.3.2</version>
+    <version>1.0.0-beta.3.3</version>
     <vendor url="https://github.com/ivanovych666/intellij-json-sorter-plugin">Taras Ozarko</vendor>
     <idea-version since-build="182"/>
 
     <description>Reorder JSON Object keys. Supports Alphabetical/natural, normal/reverse, case sensitive/insensitive sort.</description>
 
     <change-notes><![CDATA[
+        <em>
+            1.0.0-beta.3.3
+        </em>
+        <ul>
+            <li>
+                Fixed issue #4 (wrong order for shorter keys).
+            </li>
+        </ul>
         <em>
             1.0.0-beta.3.2
         </em>
