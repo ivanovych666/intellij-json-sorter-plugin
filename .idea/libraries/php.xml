@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="php">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.local/share/JetBrains/Toolbox/apps/PhpStorm/ch-0/183.4886.22/plugins/php/lib/php.jar!/" />
-      <root url="jar://$USER_HOME$/.local/share/JetBrains/Toolbox/apps/PhpStorm/ch-0/183.4886.22/plugins/php/lib/php-openapi.jar!/" />
+      <root url="jar://$USER_HOME$/.local/share/JetBrains/Toolbox/apps/PhpStorm/ch-0/192.4205.18/plugins/php/lib/php.jar!/" />
+      <root url="jar://$USER_HOME$/.local/share/JetBrains/Toolbox/apps/PhpStorm/ch-0/192.4205.18/plugins/php/lib/php-openapi.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
