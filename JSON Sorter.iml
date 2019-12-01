@@ -10,5 +10,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="php" level="project" />
+    <orderEntry type="library" name="java-8-oracle" level="application" />
   </component>
 </module>
