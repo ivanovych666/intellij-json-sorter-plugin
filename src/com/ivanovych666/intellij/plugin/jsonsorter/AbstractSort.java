@@ -5,8 +5,7 @@ import com.intellij.formatting.FormattingModelBuilder;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.lang.LanguageFormatting;
 import com.intellij.openapi.actionSystem.*;
-import com.intellij.openapi.application.Application;
-import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
@@ -52,8 +51,7 @@ public abstract class AbstractSort extends AnAction {
         JSONWriter writer = new JSONWriter(comparator());
         String result = writer.write(value);
 
-        Application app = ApplicationManager.getApplication();
-        app.runWriteAction(() -> document.setText(result));
+        WriteCommandAction.runWriteCommandAction(project, () -> document.setText(result));
 
         FormattingModelBuilder formattingModelBuilder = LanguageFormatting.INSTANCE.forContext(file);
         if (formattingModelBuilder == null) {
