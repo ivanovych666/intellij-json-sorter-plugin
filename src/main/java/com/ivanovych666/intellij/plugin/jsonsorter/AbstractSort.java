@@ -65,4 +65,8 @@ public abstract class AbstractSort extends AnAction {
         (new FileInEditorProcessor(file, editor, currentRunOptions)).processCode();
     }
 
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+    }
 }

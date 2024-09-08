@@ -11,6 +11,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class JSONSorterGroup extends DefaultActionGroup {
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public void update(@NotNull AnActionEvent event) {
         super.update(event);
 
