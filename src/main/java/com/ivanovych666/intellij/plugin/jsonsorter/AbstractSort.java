@@ -19,6 +19,11 @@ public abstract class AbstractSort extends AnAction {
     abstract Comparator<String> comparator();
 
     @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
+    }
+
+    @Override
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
         DataContext dataContext = anActionEvent.getDataContext();
         Project project = CommonDataKeys.PROJECT.getData(dataContext);
