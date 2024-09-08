@@ -13,7 +13,7 @@ public class NaturalSort extends AbstractSort {
     String normalize(String str) {
         Pattern p = Pattern.compile("\\d+");
         Matcher m = p.matcher(str);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         while (m.find()) {
             String replacement = String.format("%20s", m.group()).replace(' ', '0');
             m.appendReplacement(sb, replacement);

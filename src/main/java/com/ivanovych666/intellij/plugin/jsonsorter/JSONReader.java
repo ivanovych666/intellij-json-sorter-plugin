@@ -5,9 +5,9 @@ import org.jetbrains.annotations.NotNull;
 
 class JSONReader {
 
-    private String input;
+    private final String input;
     private int index;
-    private int length;
+    private final int length;
 
     JSONReader(@NotNull String input) {
         this.input = input;
@@ -28,19 +28,13 @@ class JSONReader {
 
     private Object readValue() throws Exception {
         String type = getType();
-        if (type.equals("object")) {
-            return readValueObject();
-        }
-        if (type.equals("array")) {
-            return readValueArray();
-        }
-        if (type.equals("string")) {
-            return readValueString();
-        }
-        if (type.equals("any")) {
-            return readValueAny();
-        }
-        throw new Exception("Expected value.");
+        return switch (type) {
+            case "object" -> readValueObject();
+            case "array" -> readValueArray();
+            case "string" -> readValueString();
+            case "any" -> readValueAny();
+            default -> throw new Exception("Expected value.");
+        };
     }
 
     private JSONArray readValueArray() throws Exception {

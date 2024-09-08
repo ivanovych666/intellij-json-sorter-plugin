@@ -4,12 +4,12 @@ import java.util.Comparator;
 
 class JSONWriter {
 
-    private Comparator<JSONTuple> comparator;
+    private final Comparator<JSONTuple> comparator;
 
     JSONWriter(Comparator<String> comparator) {
         this.comparator = (JSONTuple a, JSONTuple b) -> {
-            String as = a.getKey();
-            String bs = b.getKey();
+            String as = a.key();
+            String bs = b.key();
             return comparator.compare(
                     as.substring(1, as.length() - 1),
                     bs.substring(1, bs.length() - 1)
@@ -27,10 +27,8 @@ class JSONWriter {
 
         if (value instanceof String) {
             stringBuilder.append((String) value);
-        } else if (value instanceof JSONObject) {
+        } else if (value instanceof JSONObject list) {
             stringBuilder.append('{');
-
-            JSONObject list = (JSONObject) value;
 
             list.sort(this.comparator);
 
@@ -40,8 +38,8 @@ class JSONWriter {
                 }
                 JSONTuple keyValue = list.get(i);
 
-                String key = keyValue.getKey();
-                Object val = keyValue.getValue();
+                String key = keyValue.key();
+                Object val = keyValue.value();
 
                 stringBuilder.append(key).append(':');
 
@@ -49,10 +47,8 @@ class JSONWriter {
             }
 
             stringBuilder.append('}');
-        } else if (value instanceof JSONArray) {
+        } else if (value instanceof JSONArray list) {
             stringBuilder.append('[');
-
-            JSONArray list = (JSONArray) value;
 
             for (int i = 0, size = list.size(); i < size; i++) {
                 if (i > 0) {
