@@ -1,3 +1,5 @@
-JSON Sorter.zip
-JSON Sorter.jar
-/out
+.gradle
+.idea
+.intellijPlatform
+.qodana
+build

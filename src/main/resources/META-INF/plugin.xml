@@ -1,9 +1,9 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.ivanovych666.intellij.plugin.jsonsorter</id>
     <name>JSON Sorter</name>
-    <version>1.0.0-beta.3.4</version>
+    <version>2.0.0</version>
     <vendor url="https://github.com/ivanovych666/intellij-json-sorter-plugin">Taras Ozarko</vendor>
-    <idea-version since-build="182"/>
 
     <description>Reorder JSON Object keys. Supports Alphabetical/natural, normal/reverse, case sensitive/insensitive sort.</description>
 
@@ -77,4 +77,5 @@
 
         </group>
     </actions>
+
 </idea-plugin>

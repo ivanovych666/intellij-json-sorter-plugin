@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JSON Sorter.iml" filepath="$PROJECT_DIR$/JSON Sorter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intellij-json-sorter-plugin.iml" filepath="$PROJECT_DIR$/.idea/modules/intellij-json-sorter-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intellij-json-sorter-plugin.main.iml" filepath="$PROJECT_DIR$/.idea/modules/intellij-json-sorter-plugin.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/intellij-json-sorter-plugin.test.iml" filepath="$PROJECT_DIR$/.idea/modules/intellij-json-sorter-plugin.test.iml" />
     </modules>
   </component>
 </project>
