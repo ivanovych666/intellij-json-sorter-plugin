@@ -1,13 +1,22 @@
 <idea-plugin>
     <id>com.ivanovych666.intellij.plugin.jsonsorter</id>
     <name>JSON Sorter</name>
-    <version>1.0.0-beta.3.4</version>
     <vendor url="https://github.com/ivanovych666/intellij-json-sorter-plugin">Taras Ozarko</vendor>
-    <idea-version since-build="182"/>
 
     <description>Reorder JSON Object keys. Supports Alphabetical/natural, normal/reverse, case sensitive/insensitive sort.</description>
 
     <change-notes><![CDATA[
+        <em>
+            2.0.0
+        </em>
+        <ul>
+            <li>
+                Fixed issues #11, #12, #13 (`ActionUpdateThread.OLD_EDT` is deprecated and going to be removed soon).
+            </li>
+            <li>
+                Migrated from DevKit plugin to Gradle plugin
+            </li>
+        </ul>
         <em>
             1.0.0-beta.3.4
         </em>
