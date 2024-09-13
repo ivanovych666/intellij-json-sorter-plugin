@@ -2,6 +2,8 @@ package com.ivanovych666.intellij.plugin.jsonsorter;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class JSONReader {
 
@@ -24,6 +26,30 @@ class JSONReader {
         }
 
         return value;
+    }
+
+    JSONFormat getFormat() {
+        JSONFormat format = new JSONFormat();
+
+        Pattern indentPattern = Pattern.compile("[\n\r]+([\t ]+)");
+        Matcher indentMatcher = indentPattern.matcher(input);
+        boolean indentFound = indentMatcher.find();
+        if (indentFound) {
+            format.indent = indentMatcher.group(1);
+        }
+
+        Pattern newLinePattern = Pattern.compile("\n\r|\r\n|\n|\r");
+        Matcher newLineMatcher = newLinePattern.matcher(input);
+        boolean newLineFound = newLineMatcher.find();
+        if (newLineFound) {
+            format.newLine = newLineMatcher.group();
+        }
+
+        Pattern finalNewLinePattern = Pattern.compile("[\n\r][\t ]*$");
+        Matcher finalNewLineMatcher = finalNewLinePattern.matcher(input);
+        format.finalNewLine = finalNewLineMatcher.find();
+
+        return format;
     }
 
     private Object readValue() throws Exception {

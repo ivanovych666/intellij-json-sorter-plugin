@@ -1,9 +1,5 @@
 package com.ivanovych666.intellij.plugin.jsonsorter;
 
-import com.intellij.codeInsight.actions.*;
-import com.intellij.formatting.FormattingModelBuilder;
-import com.intellij.ide.util.PropertiesComponent;
-import com.intellij.lang.LanguageFormatting;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.editor.Document;
@@ -48,21 +44,12 @@ public abstract class AbstractSort extends AnAction {
             return;
         }
 
-        JSONWriter writer = new JSONWriter(comparator());
+        JSONWriter writer = new JSONWriter(comparator(), reader.getFormat());
         String result = writer.write(value);
 
-        WriteCommandAction.runWriteCommandAction(project, () -> document.setText(result));
-
-        FormattingModelBuilder formattingModelBuilder = LanguageFormatting.INSTANCE.forContext(file);
-        if (formattingModelBuilder == null) {
-            return;
+        if (!text.equals(result)) {
+            WriteCommandAction.runWriteCommandAction(project, () -> document.setText(result));
         }
-
-        LastRunReformatCodeOptionsProvider provider = new LastRunReformatCodeOptionsProvider(PropertiesComponent.getInstance());
-        ReformatCodeRunOptions currentRunOptions = provider.getLastRunOptions(file);
-
-        currentRunOptions.setProcessingScope(TextRangeType.WHOLE_FILE);
-        (new FileInEditorProcessor(file, editor, currentRunOptions)).processCode();
     }
 
     @Override
