@@ -3,7 +3,9 @@
     <name>JSON Sorter</name>
     <vendor url="https://github.com/ivanovych666/intellij-json-sorter-plugin">Taras Ozarko</vendor>
 
-    <description>Reorder JSON Object keys. Supports Alphabetical/natural, normal/reverse, case sensitive/insensitive sort.</description>
+    <description>Reorder JSON object keys. Support alphabetical, natural, case-sensitive, case-insensitive, ascending
+        and descending options.
+    </description>
 
     <change-notes><![CDATA[
         <em>
@@ -22,7 +24,7 @@
                 Fixed issues #11, #12, #13 (`ActionUpdateThread.OLD_EDT` is deprecated and going to be removed soon).
             </li>
             <li>
-                Migrated from DevKit plugin to Gradle plugin
+                Migrated from DevKit plugin to Gradle plugin.
             </li>
         </ul>
         <em>
@@ -54,45 +56,58 @@
     <depends>com.intellij.modules.platform</depends>
 
     <actions>
-        <group id="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup" text="JSON Sorter" popup="true"
-               class="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup">
+        <group id="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup"
+               text="JSON Sorter"
+               description="Sort keys in the specified order."
+               popup="true"
+               class="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup"
+               icon="AllIcons.FileTypes.Json">
             <add-to-group group-id="EditorPopupMenu"/>
             <add-to-group group-id="ProjectViewPopupMenu"/>
 
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"
-                    text="Alphabetical Sort">
+                    text="Alphabetical Sort"
+                    description="Sort keys alphabetically, case-sensitive, and in ascending order.">
             </action>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalReverseSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalReverseSort"
-                    text="Alphabetical Reverse Sort">
+                    text="Alphabetical Reverse Sort"
+                    description="Sort keys alphabetically, case-sensitive, and in descending order.">
             </action>
+            <separator/>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.NaturalSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.NaturalSort"
-                    text="Natural Sort">
+                    text="Natural Sort"
+                    description="Sort keys alphabetically, naturally, case-sensitive, and in ascending order.">
             </action>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.NaturalReverseSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.NaturalReverseSort"
-                    text="Natural Reverse Sort">
+                    text="Natural Reverse Sort"
+                    description="Sort keys alphabetically, naturally, case-sensitive, and in descending order.">
             </action>
-
+            <separator/>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalCiSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalCiSort"
-                    text="Alphabetical Sort (CI)">
+                    text="Alphabetical Sort (CI)"
+                    description="Sort keys alphabetically, case-insensitive, and in ascending order.">
             </action>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalReverseCiSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalReverseCiSort"
-                    text="Alphabetical Reverse Sort (CI)">
+                    text="Alphabetical Reverse Sort (CI)"
+                    description="Sort keys alphabetically, case-insensitive, and in descending order.">
             </action>
+            <separator/>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.NaturalCiSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.NaturalCiSort"
-                    text="Natural Sort (CI)">
+                    text="Natural Sort (CI)"
+                    description="Sort keys alphabetically, naturally, case-insensitive, and in ascending order.">
             </action>
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.NaturalReverseCiSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.NaturalReverseCiSort"
-                    text="Natural Reverse Sort (CI)">
+                    text="Natural Reverse Sort (CI)"
+                    description="Sort keys alphabetically, naturally, case-insensitive, and in descending order.">
             </action>
-
         </group>
     </actions>
 </idea-plugin>
