@@ -7,6 +7,14 @@
 
     <change-notes><![CDATA[
         <em>
+            2.1.0
+        </em>
+        <ul>
+            <li>
+                Added the ability to sort selected files from the Project tool window.
+            </li>
+        </ul>
+        <em>
             2.0.0
         </em>
         <ul>
@@ -48,7 +56,8 @@
     <actions>
         <group id="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup" text="JSON Sorter" popup="true"
                class="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu"/>
+            <add-to-group group-id="ProjectViewPopupMenu"/>
 
             <action class="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"
                     id="com.ivanovych666.intellij.plugin.jsonsorter.AlphabeticalSort"
