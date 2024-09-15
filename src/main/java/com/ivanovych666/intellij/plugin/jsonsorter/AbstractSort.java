@@ -36,7 +36,7 @@ public abstract class AbstractSort extends AnAction {
 
     private void projectAction(@NotNull DataContextUtils dataContextUtils) {
         FileDocumentManager fileDocumentManager = FileDocumentManager.getInstance();
-        VirtualFile[] files = dataContextUtils.getVirtualFiles();
+        VirtualFile[] files = dataContextUtils.getSelectedJsonFiles(false);
         for (VirtualFile file : files) {
             Document document = fileDocumentManager.getDocument(file);
             documentAction(dataContextUtils, document);

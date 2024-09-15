@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 
+
 public class JSONSorterGroup extends DefaultActionGroup {
     @Override
     public @NotNull ActionUpdateThread getActionUpdateThread() {
@@ -21,7 +22,7 @@ public class JSONSorterGroup extends DefaultActionGroup {
 
     private boolean isVisible(DataContext dataContext) {
         DataContextUtils dataContextUtils = new DataContextUtils(dataContext);
-        VirtualFile[] files = dataContextUtils.getVirtualFiles();
+        VirtualFile[] files = dataContextUtils.getSelectedJsonFiles(true);
         return files.length > 0;
     }
 }
