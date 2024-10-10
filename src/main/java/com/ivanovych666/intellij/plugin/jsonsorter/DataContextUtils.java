@@ -1,10 +1,10 @@
 package com.ivanovych666.intellij.plugin.jsonsorter;
 
-import com.intellij.json.JsonFileType;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.fileTypes.FileTypeRegistry;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.vfs.VfsUtilCore;
@@ -15,9 +15,12 @@ import java.util.ArrayList;
 
 public class DataContextUtils {
     private final DataContext dataContext;
+    private final FileType jsonFileType;
 
     DataContextUtils(@NotNull DataContext dataContext) {
         this.dataContext = dataContext;
+        FileTypeRegistry fileTypeRegistry = FileTypeRegistry.getInstance();
+        jsonFileType = fileTypeRegistry.getFileTypeByExtension("json");
     }
 
     public Project getProject() {
@@ -79,6 +82,6 @@ public class DataContextUtils {
     private boolean isJson(@NotNull VirtualFile file) {
         String path = file.getPath();
         FileType type = file.getFileType();
-        return JsonFileType.INSTANCE.equals(type) || path.toLowerCase().endsWith(".json");
+        return jsonFileType.equals(type) || path.toLowerCase().endsWith(".json");
     }
 }
