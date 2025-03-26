@@ -31,7 +31,7 @@ public class DataContextUtils {
         return CommonDataKeys.EDITOR.getData(dataContext);
     }
 
-    public VirtualFile @NotNull [] getSelectedJsonFiles(boolean returnFirst) {
+    public @NotNull VirtualFile[] getSelectedJsonFiles(boolean returnFirst) {
         Project project = getProject();
         ProjectFileIndex projectFileIndex = ProjectFileIndex.getInstance(project);
         VirtualFile[] selectedFiles = getVirtualFileArray();
@@ -66,7 +66,7 @@ public class DataContextUtils {
         return list.toArray(new VirtualFile[0]);
     }
 
-    private VirtualFile @NotNull [] getVirtualFileArray() {
+    private @NotNull VirtualFile[] getVirtualFileArray() {
         VirtualFile[] virtualFileArray = CommonDataKeys.VIRTUAL_FILE_ARRAY.getData(dataContext);
         if (virtualFileArray == null) {
             VirtualFile virtualFile = CommonDataKeys.VIRTUAL_FILE.getData(dataContext);
