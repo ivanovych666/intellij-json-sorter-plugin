@@ -9,6 +9,14 @@
 
     <change-notes><![CDATA[
         <em>
+            2.1.2
+        </em>
+        <ul>
+            <li>
+                Fixed issue #17 (Compatibility with the IntelliJ 2025.1)
+            </li>
+        </ul>
+        <em>
             2.1.1
         </em>
         <ul>

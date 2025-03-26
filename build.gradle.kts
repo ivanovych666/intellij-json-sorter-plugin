@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.ivanovych666.intellij.plugin.jsonsorter"
-version = "2.1.1"
+version = "2.1.2"
 
 repositories {
   mavenCentral()
