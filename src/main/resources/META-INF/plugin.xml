@@ -54,6 +54,7 @@
         ]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.json</depends>
 
     <actions>
         <group id="com.ivanovych666.intellij.plugin.jsonsorter.JSONSorterGroup"
