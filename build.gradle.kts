@@ -37,7 +37,7 @@ dependencies {
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
-        create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
+        intellijIdea(providers.gradleProperty("platformVersion"))
 
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
         bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
@@ -51,6 +51,7 @@ dependencies {
 
 // Configure IntelliJ Platform Gradle Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-extension.html
 intellijPlatform {
+    buildSearchableOptions = false
     pluginConfiguration {
         id = providers.gradleProperty("pluginGroup")
         name = providers.gradleProperty("pluginName")
@@ -143,15 +144,17 @@ tasks {
 }
 
 val runIcOld by intellijPlatformTesting.runIde.registering {
-    type = IntelliJPlatformType.IntellijIdeaCommunity
-    version = "2024.3"
+    type = IntelliJPlatformType.IntellijIdea
+    version = providers.gradleProperty("pluginSinceBuild")
     plugins {
         robotServerPlugin()
     }
 }
 
 val runIcCurrent by intellijPlatformTesting.runIde.registering {
-    type = IntelliJPlatformType.IntellijIdeaCommunity
+    type = IntelliJPlatformType.IntellijIdea
+    version = "LATEST-EAP-SNAPSHOT"
+    useInstaller = false
     plugins {
         robotServerPlugin()
     }
