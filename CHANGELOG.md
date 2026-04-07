@@ -2,6 +2,10 @@
 
 # JSON Sorter
 
+## [2.1.5] - 2026-04-07
+
+- Fixed issue #20 (Compatibility with the IntelliJ 2026.1+)
+
 ## [2.1.4] - 2025-11-18
 
 - Fixed issue #19 (Compatibility with the IntelliJ 2025.3+)
