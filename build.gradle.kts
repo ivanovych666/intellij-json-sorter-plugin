@@ -90,7 +90,9 @@ intellijPlatform {
 
         ideaVersion {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
-            untilBuild = providers.gradleProperty("pluginUntilBuild")
+            if (providers.gradleProperty("pluginUntilBuild").isPresent) {
+                untilBuild = providers.gradleProperty("pluginUntilBuild")
+            }
         }
     }
 
